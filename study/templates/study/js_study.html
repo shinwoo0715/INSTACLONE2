@@ -1,0 +1,98 @@
+<!-- const : 정적 -->
+<!-- let : 동적 -->
+<!-- === : 조건문 같냐? -->
+
+<!-- 우선순위 포인트 (포인트가 높을 수록우선순위로 올라간다.) 예) .box.on : 1번 | .on 2번 | 이런식으로 말이다.
+id = 100
+class = 10
+tag = 1
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    .box{
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    .box.on{
+      width: 4000px;
+      -webkit-transition: all 500ms cubic-bezier(1.000, 0, 0.045, 1); /* older webkit */
+-webkit-transition: all 500ms cubic-bezier(1.000, -0.600, 0.045, 1.650);
+   -moz-transition: all 500ms cubic-bezier(1.000, -0.600, 0.045, 1.650);
+     -o-transition: all 500ms cubic-bezier(1.000, -0.600, 0.045, 1.650);
+        transition: all 500ms cubic-bezier(1.000, -0.600, 0.045, 1.650); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(1.000, 0, 0.045, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(1.000, -0.600, 0.045, 1.650);
+   -moz-transition-timing-function: cubic-bezier(1.000, -0.600, 0.045, 1.650);
+     -o-transition-timing-function: cubic-bezier(1.000, -0.600, 0.045, 1.650);
+        transition-timing-function: cubic-bezier(1.000, -0.600, 0.045, 1.650);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+  </div>
+  <span class="color"></span>
+
+  <script type="text/javascript">
+    const userName = 'shinwoo';
+    if (userName === 'Nayeon') {
+      console.log("정답!");
+    } else {
+      console.log("오답!");
+    }
+
+    if (userName === '어벙한신우') {
+      console.log("안녕나는 어벙한 신우야");
+    } else if (userName === '멍청한신우') {
+      console.log("안녕 나는 멍청한 신우야");
+    } else {
+      console.log("내가 누군지 모르겠어");
+    }
+
+    // 조건문
+    // 반복문
+    // for (let i = 0; i < 10; i++) {
+    //   console.log(i)
+    // }
+    // document.getelcgetElementsByClassName('box');
+    // document.querySelector('.box');
+    // document.querySelector('#box');
+    // 이렇게 가져오는 것이 효율적이다.
+
+    const box = document.querySelector('.box');
+    let color = document.querySelector('.color');
+    // 배열로다가 선택자를 오지게 많이 가져올수 있다.
+    // const box = document.querySelectorAll('.box');
+
+    // red를 클릭했을대 css의 색깔이 바뀌도록 js로 제어를 해보도록 하겠다.
+    box.addEventListener("click" , function(){
+      // console.log("click!")
+      let randomColor = Math.floor(Math.random()*16777215).toString(16);
+      box.style.background = "#"+randomColor;
+      color.innerHTML = "#"+randomColor;
+      // 클릭만해도 클래스가 추가가되는 방법
+      // box.classList.add('on');
+      // // 반대로 삭제는 : remove
+      // box.classList.remove("on");
+      // toggle이라는 해는 약간 add , remove를 썪은 느낌이다.
+      box.classList.toggle('on'); //on있으면 빼고 없으면 넣어줄께
+    });
+
+  </script>
+
+</body>
+
+</html>

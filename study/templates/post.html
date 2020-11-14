@@ -1,0 +1,84 @@
+<article class="contents">
+    <!-- content header (user 있는곳) -->
+    <!-- contents 안에 user이미지 닉넴의 header , 이미지 부분 , 좋아요 댓 북맠 부분 , 등 필드 나누기  -->
+    <header class="top">
+      <!-- header안에는 프로필 사진 그리고 닉넴 등 이렇게 들어온다 -->
+      <div class="user_container">
+        <div class="profile_img">
+          <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필이미지">
+        </div>
+        <div class="user_name">
+          <div class="nick_name m_text">DoShinwoo</div>
+          <div class="country s_text">Seoul , South Korea</div>
+        </div>
+      </div>
+      <!-- 얘를 우리가 user_container안에 안넣은 이유는 우리가 나중에 top class에
+    display: flext;justify-content:space-between;하고 양끝으로 몰리게 되는데 하나의 요소로
+  몰아버리면 나눠지질않는다. -->
+      <div class="sprite_more_icon" data-name="more">
+        <ul class="toggle_box">
+          <li><input type="submit" class='"follow"' value='팔로우' data-name='follow'></li>
+          <li>수정</li>
+          <li>삭제</li>
+        </ul>
+      </div>
+    </header>
+    <!-- user field end -->
+
+    <!-- image가 들어가는곳 -->
+    <div class="img_section">
+      <!-- 이미지가 여러가지로 올라올수 있으니까 tras_inner를 만들어주자 -->
+      <div class="trans_inner">
+        <div class=""><img src='{% static "imgs/img_section/img01.jpg" %}' alt="visual01" /></div>
+      </div>
+    </div>
+    <!-- image end -->
+
+    <!-- 좋아요 버튼과 댓글버튼이 들어가는 field -->
+    <div class="bottom_icons">
+      <div class="left_icons">
+        <div class="heart_btn">
+          <!-- heart_icon을 heartbtn으로 감싸야하는이유는
+                                      애니매이선이 적용이 되야되서 감싸주는 것이 좋다. -->
+          <div class="sprite_heart_icon_outline" name=37 data-name='heartbeat'></div>
+        </div>
+        <div class="sprite_bubble_icon"></div>
+        <div class="sprite_share_icon" data-name='share'></div>
+      </div>
+      <div class="right_icon">
+        <div class="sprite_bookmark_outline" name='37' data-name='bookmark'></div>
+      </div>
+    </div>
+    <!-- 좋아요 , 댓 , 북 버튼 들어가는곳 end -->
+
+    <!-- 좋아요 count -->
+    <div class="likes m_text">
+
+      <span id='like-count-37'>2,345</span>
+      <span id='bookmark-count-37'></span>
+
+    </div>
+    <!-- end -->
+    <!-- 댓글 field -->
+    <div class="comment_container">
+      <div class="comment" id="comment-list-ajax-post37">
+
+        <div class="comment-detail">
+          <div class="nick_name m_text">nayeon</div>
+          <div class="">귀여워</div>
+        </div>
+
+      </div>
+      <div class="small_heart">
+        <div class="sprite_small_heart_icon_outline"></div>
+      </div>
+    </div>
+    <!-- end -->
+    <!-- timer -->
+    <div class="timer">1시간 전</div>
+    <!-- end -->
+    <div class="comment_field" id="add-comment-post-37">
+      <input type="text" placeholder="댓글달기...">
+      <div class="upload_btn m_text" data-name='comment'>게시</div>
+    </div>
+  </article>

@@ -1,0 +1,735 @@
+/* spritecow.com에 open image하고 icon 클릭하고 밑에 코드 복붙 */
+/* .icon_insta_logo {
+	background: url('imgs/background01.png') no-repeat -53px -235px;
+	width: 22px;
+	height: 22px;
+} */
+
+/* 여기 밑에 inline-block을 만든이유 :
+우리가 형태를 만들려면 좌우 값고 높이 값을 지정 하려면 block element에게만 가능합니다.
+span ( inline 요소 ) 태그를 어쩔수 없이 지정이 된다고하면 그 span요소는 형태를 가질수가 없다.
+즉 쉽게 말하면 span 의 inline적 속성고 형태를 변환시킬수 있는 block 형태를 같이 쓰자해서 inline-block인것이다. */
+
+/* inline-block :
+원래의 block은 세로배치가 기본이다. 하지만 inline속성과 같이 주었기 때문에 가로 배치가 된것이다. */
+
+/* 가로 배치 다른 방법 ( inline-block 제외 )
+float , inline-block
+ */
+.sprite_insta_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -53px -235px;
+    width: 22px;
+    height: 22px;
+}
+
+.sprite_write_logo {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -94px -72px;
+    width: 103px;
+    height: 29px;
+}
+
+.sprite_compass_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -130px -286px;
+    width: 23px;
+    height: 23px;
+}
+
+.sprite_user_icon_outline {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -272px -182px;
+    width: 22px;
+    height: 24px;
+}
+
+.sprite_heart_icon_outline {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -52px -261px;
+    width: 24px;
+    height: 22px;
+}
+
+.sprite_small_search_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -337px -246px;
+    width: 10px;
+    height: 10px;
+}
+
+.sprite_more_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -301px -218px;
+    width: 15px;
+    height: 3px;
+}
+
+.sprite_bubble_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -239px -202px;
+    width: 24px;
+    height: 24px;
+}
+
+.sprite_share_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -324px -52px;
+    width: 21px;
+    height: 24px;
+}
+
+.sprite_bookmark_outline {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -237px -286px;
+    width: 19px;
+    height: 24px;
+    cursor: pointer;
+}
+.sprite_bookmark_outline.on {
+    background: url('../imgs/background01.png') no-repeat -159px -286px;
+    width: 19px;
+    height: 24px;
+}
+
+.sprite_small_heart_icon_outline {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -323px -274px;
+    width: 12px;
+    height: 11px;
+}
+
+.sprite_camera_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -271px -104px;
+    width: 24px;
+    height: 22px;
+}
+
+.sprite_insta_big_logo {
+    display: inline-block;
+    background: url('../imgs/background02.png') no-repeat -98px -150px;
+    width: 175px;
+    height: 51px;
+}
+
+.sprite_plus_icon {
+    display: inline-block;
+    background: url('../imgs/background01.png') no-repeat -187px -202px;
+    width: 23px;
+    height: 23px;
+}
+
+/* spritecow 종료 */
+
+/* header 시작 */
+
+body{
+  background: #fafafa;
+}
+
+/* main text와 samll text로 나누어서 우리가 원하는 class에 예를들어 class='aa' 면
+aa 바로뒤에 'aa s_text'이렇게 지정을하면 s_text의 속성까지 적용이된다.  */
+.m_text{
+  font-size: 14px;
+  font-weight: bold;
+}
+.s_text{
+  font-size: 12px;
+}
+
+#header{
+  width: 100%;
+  position: absolute;
+  /* 공중에 떠야되니까 position:absolute
+:absolute면 left , top을 꼭 지정! */
+  z-index: 999;
+  /* 가장 위로 올라가 있어야 되서! */
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#header.on{
+  /* pageYOFFset이 10이상이면 header에 on클래스를 붙여서 on에 맞는 css를 적용시키자 */
+  position: fixed;
+}
+
+/* 높이 값을 지저 줄때 그 자식들한테 지어주어야하낟.  */
+#header .inner{
+  width: 975px;
+  height: 77px;
+  /* 가운데 정렬 */
+  margin: 0 auto;
+  /* 우리가 하고자하는 inner의 요소 3가지 (logo , search box , icons) 얘네들을 가로 배치를 햇다. */
+  /* flex의 속성 :
+          얘는 x축으로 정렬할수 있는 속성이 존재합니다.우리가 x축으로 요소를 가운데 정렬하고싶으면 쉽지 않은 잡업을 해야하낟.
+           - flex는 'justify-content'라는 속성을 제공합니다. justify-content는 즉 양끝 */
+  display: flex;
+  /* 여기까지만 하면 가로배치가된다 하지만 타닥타닥 붙어 있는것을 볼수 있다.  */
+  /* justify-content: center; */
+  /* 이렇게 하면 x축으로 가운데 정렬하게된다.  */
+
+  /* 하지만 우리는 center가 아닌 space-between을 사용할것이다.
+  이렇게 하면 양끝에 2개는 끝으로 아얘몰리고 가운데는 완전 가운데 있게 된다. */
+  justify-content: space-between;
+
+  /* 이제 y축으로 가운데 정렬을 해볼젓이다.  */
+  align-items: center;  /* 이게 끝임 */
+  transition: all .4s;
+}
+
+/* header에 on이 붙으면 inner의 높이를 줄여라 */
+/* 근데 보면 뭔가 스무스하게 바뀌지 않고 딱하면서 바뀐다. 이런 현상을 화면전환으로 바꾸어주자 그러려면 #header .inner로 가서
+transition을 주자 */
+#header.on .inner{
+  height: 54px;
+}
+
+#header .inner .logo > a{
+  /* transparent : 투명하게 | 이렇게 하면 logo와 logo 사이의 문양을 없애 줄것이다.  */
+  color: transparent;
+}
+
+
+/* ####### logo이 icon 과 icon 사이에 바를 집어 넣는 방법 ####### */
+
+/* 설명 :
+-그러면 logo와 logo 사이의 바를 만들어 볼려면은 어떻게 해야하나 이건 대부분 image로
+하는 사람들이 있는데 이걸 선택자라는 것을 이용하는 것이 좀더 편리할수 있습니다.
+( logo 안에 icon을 선택 and 그 icon:after를 지정 )
+
+
+- 여기서 보면 after가 오른쪽 끝으로 가있다 . 우리의 코드를 보면 position을 absolute로 주었다.
+	이 absolute는 부모를 기준으로 위치를 잡는 아이들이다. 근데 그 부모의 기준을 잡는
+	조건이 무엇이냐 부모가 relative , absolute , fixed 이 3중에 하나를 가지고 있어야 합니다.
+ 	근데! 우리가 after의 부모인 sprite_insta_icon한테 position을 설정해주지 않았다
+	그래서 부모 객체에 기준점을 잡아라 하고 relative를 주면 logo 사이에 만들어진다.  */
+
+#header .inner .logo .sprite_insta_icon{
+  position: relative;
+  /* 자 이렇게 작성을 하면 바가 생성이 되었을 것이다. 이 바는 즉 부모객체인 sprite_insta_icon의 자식이 되어서
+  그안에서 바가 있을수 있다 근데 위치가 이상하다 우리가 글자를 미루던지 해서 바의 위치를 잡아보자 */
+  /* -글자를 30px정도만 밀어보자 */
+  margin-right: 30px;
+}
+#header .inner .logo .sprite_insta_icon:after{
+  content: '';
+  width: 1px;
+  height: 28px;
+  background: #000;
+  position: absolute;
+  /* right: 0; right를 위에 margin-right를 하고 나서 -15px 로 바꾸었다 maring-right로 글자 ( instargram )
+  오른쪽으로 30px 옮긴뒤에 저 바를 logo 의 icon 인스타 로고를 기준으로 right -15 즉 오른쪽으로 15px이동한것*/
+  right: -18px;
+  top: -3px;
+  transition: all .2s;
+}
+
+/* logo의 icon과 icon 사이를 일정하게 line을 잡는 법  */
+
+#header .inner .logo div {
+  /* 그리고 inline 요소들을 알맞게 배치시키려면? ( logo )
+  before : logo와 logo 두 개의 높이가 달랐다. 그래서 삐뚤했다 .
+  after : 완벽하게 맞아 떨어 지진않았지만 line이 일정해졌다. */
+  vertical-align: middle;
+}
+
+#header .inner .logo div:nth-child(2){
+  transform: translateY(3px);
+  transition: all .2s;
+}
+
+/* 스크롤하면 header에 있는 after 바와 header icons 두번째가 사라진다. */
+#header.on .inner .logo div:nth-child(2){
+  opacity: 0;
+}
+#header.on .inner .logo .sprite_insta_icon:after{
+  opacity: 0;
+}
+
+/*######## search box를 이쁘게 바꾸자 ########3*/
+
+/* fake_field의 부모인 searchbox로 기준점을 잡자  */
+#header .search_box{
+  position: relative;/* 이러면 absolute의 top: 0 left: 0이 그냥 된쪽 위가아닌 input으로 기준점을 잡아 input에 왼쪽위로간다.  */
+  /* 이제 input왼쪽위에 있는 fke field를 가운데로 옮겨보자 이건 fake_field 로 가서 top: 50%; left: 50%를 주면 된다.
+  (단, top , left를 지정하려면 항상 absolte를 지정해 주어야한다. ) */
+}
+/* input 검색창을 꾸무기 */
+#search-field{
+  width: 185px;
+  height: 28px;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  /* padding: 위아래 양끝으로 */
+  padding: 3px 30px;
+  color: #999;
+  font-weight: 400;
+  text-align: left;
+  font-size: 14px;
+  /* 이것이 무엇이냐 우리가 input focus를 했을때 outline으로 파란색이 들어가있는것을 none 으로 없애겠다는 것이다. */
+  outline: none;
+}
+
+/* input에 placeholder ( 검색 )가 우리가 focus했을때만 나와야한다. */
+/* 우리가 특정 태그의 속성을 지정을 할때는 콜론 두개를 사용한다. :: 이렇게 */
+/* 1번째 */
+#search-field::placeholder{
+  /* 이렇게 하면 현재 search-filed의 placeholder의 font-size가 0 이다. */
+  font-size: 0;
+}
+
+/* 2번째 */
+#search-field:focus::placeholder{
+  /* search-field를 focus했을때 placeholder지정  */
+  font-size: 14px;
+}
+/* 3번째 : focus를 하면 fake_field가 사라져야한다. */
+/* ~ : 그 근처에 있는 fake_field에 가장 옆에 있는 애를 찾는다.  */
+#search-field:focus ~ .fake_field > span:nth-child(1){
+  /* 여기서 span:nth-child(1) : 얘는 돋보기 icon이다.  */
+  transform: translateX(-105px);
+}
+/* 이제 돋보기는 옆으로 이동했으니까 글자는 사라져야하니까 */
+#search-field:focus ~ .fake_field > span:nth-child(2){
+  /* span:nth-child(2) : 얘는 글자이다.  */
+  display: none;
+}
+
+/* 검색창의 icon 그리고 검색을 position absolute를 주어서 input위에 띄우자 (현재 input 아래에 있다.) */
+#header .search_box .fake_field{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 근데 이상태로 띄우면 얘네들이 왼쪽 위로 간다 그래서 < 부모에게 >(search_box) '기준점'을 잡아주어야한다.  */
+  transform: translate(-50% , -50%); /* 이렇게 해서 다시 절반 만큼을 다시 미는 것이다. */
+
+  /* 여기서 우리는 search-field:focus를 nhh-child() 까지한상태이다.
+  여기서 문제점이 있다. 우리가 fake_field를 클릭하면 focus가 되지 않는다. 이건 fake_field가 pointer로 잡혀
+  있어서 그런것이다. */
+  pointer-events: none;
+}
+/* header안에 있는 right-icons들을 보면 margin이 조금씩 들어있다. */
+/* 보통 margin-right로 margin을주고 마지막꺼의 margin을 0을 주어서 깜끔하게 maring을 준다. */
+/* 우리는 그렇게 하지 않을 것이다. 우리는 아까 써보았던 display: flex를 사용하여볼것이다.  */
+#header .right_icons {
+  width: 132px;
+  display: flex;
+  /* width값을 보고 알아서 margin을 나눠 갖는다.  */
+  justify-content: space-between;
+}
+#header .right_icons > div{
+
+}
+
+
+/* header 끝 */
+
+/* main 시작  */
+
+/* 윤곽잡기 */
+#main_container{
+  padding-top: 130px;
+  /* margin을 주면 margin병합 현상이 일어 날수 있다.우리가 content를 밀때는 위에 아래로 밀어주어야한다.
+  아래 content를 아래서 위로 밀어야할때는 padding-top을 준다. */
+
+  /* content가 모두 가운데로 와야되니까 : display 이용*/
+  display: flex;
+  justify-content: center;
+}
+#main_container .inner{
+  width: 935px;
+  /* 여기서 잠시 반응형 웹사이트를 언급하자면 나중에 반응형 웹사이트를 만들때는 px를 다바꾸어주어주어야한다. */
+
+  /* relative를 주는 이유는 inner 자식인 sidebox가 기준점이 없어 absolute 해도 저꼭대기로 간다
+  그래서 inner를 relative로 position을 잡아주는 것이다.  */
+  position: relative;
+}
+
+.contents_box{
+
+}
+
+.contents{
+  max-width: 614px;
+  /* height: 500px; */
+  /* 풍선안에 풍선을 불듯이 자식의 height값이 image로 지정이 되었기때문에
+      부모객체의 height값은 무의미하다 */
+  border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 3px;
+  margin-bottom: 60px;
+  background: white;
+}
+
+/* contents 의 요소들을 층별로 나누자  */
+
+.contents .top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.contents .top .profile_img{
+  width: 32px;
+  height: 32px;
+  /* border-radius: 50% | 원이 된다.  */
+  border-radius: 50%;
+  /* overflow : hidden은 특정 layout밖으로 나가면 보이지 자른다. */
+  overflow: hidden;
+  margin-right: 10px;
+}
+/* 이렇게 img tag를 지정하지 않으면 image의 제 위치를 찾을 수 없어서 따로 지정을 해주고
+그리고 width 100%해야 보입니다. */
+.contents .top .profile_img img{
+  width: 100%;
+}
+/* 가로정렬 */
+.contents .top .user_container{
+  display: flex;
+}
+
+.contents .sprite_more_icon{
+  position: relative;
+  cursor: pointer;
+}
+
+.contents .sprite_more_icon.on .toggle_box{
+  display: block;
+}
+
+.contents .toggle_box{
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  border: 1px solid rgba(0 , 0 , 0 , 0.09);
+  border-radius: 3px;;
+  display: none;
+}
+
+.contents .toggle_box > li{
+   padding: 5px 10px;
+   background: #fff;
+}
+.contents .toggle_box > li input{
+  border: none;
+  font-size: inherit;
+  background: white;
+  cursor: pointer;
+}
+
+
+.user_container > .user_name > .nick_name{
+  margin-bottom: 5px;
+}
+.contents .img_section{
+  /* 부모 element를 흘러넘치지 못하게 overflow hidden을 준다. */
+  overflow: hidden;
+}
+.contents .img_section img{
+  width:100%;
+}
+
+/* 좋아요 버튼 , 댓 버튼 들어가는 field 시작 */
+.contents .bottom_icons{
+  /* 부모 태그에 가로배치를 해야한다. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.contents .bottom_icons .left_icons{
+  display: flex;
+}
+.contents .bottom_icons .left_icons > div{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.contents .bottom_icons .right_icons > div{
+  cursor: pointer;
+}
+
+.heart_btn .sprite_heart_icon_outline.on {
+  background: url("/static/imgs/background01.png") no-repeat -26px -261px;
+}
+
+.contents .likes{
+  padding: 5px 20px;
+  color: #262626;
+}
+.contents .comment_container{
+  /* 가로배치는 항상 대상의 부모 객체에 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+.contents .comment_container .comment{
+  display: flex; /*  댓글을 ajax롤 추가하면 가로로 추가가되는 모습을 볼수있다. */
+  /*  세로로 추가하려면 */
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.contents .comment_container .comment-detail{
+  display: flex;
+}
+
+.contents .comment_container .comment .nick_name{
+  margin-right: 10px;
+}
+.contents .timer{
+  font-size: 10px;
+  /* 이 시벌새끼가 이걸 왜쓰는지를 안알려줘서 적음
+  letter-spacing : 글자 간격 */
+  letter-spacing: 0.2px;
+  color: #999;
+  border-bottom: 1px solid rgba(0,0,0,0.09);
+  padding:10px 20px;
+}
+.contents .comment_field{
+  min-height: 56px;
+  padding: 0 20px;
+  position: relative;
+}
+.contents .comment_field input{
+  width: 100%;
+  height: 56px;
+  border: none;
+  outline:none;
+  /* transparent : 투명하게 만들기 */
+  background: transparent;
+
+}
+
+/* 댓글달기의 input에 focus를 하면 upload_btn은... */
+.contents .comment_field input:focus ~ .upload_btn{
+  /* pointer-evnet를 초기화를 한다.( initial ) */
+  pointer-events: initial;
+  opacity: 1;
+}
+
+.contents .comment_field .upload_btn{
+  color: #3897f0;
+  position: absolute;
+  right: 20px;
+  /* top: 0; */
+  cursor: pointer;
+  /* 여기까지 하고 보면 게시버튼을 보면 top:0 이라서 위에 딱붙은 것을 알수 있다.
+  그래서 y축으로 정렬을 하고자한다.일단 우에 top: 0을 50%으로 */
+  top: 50%;
+  transform: translateY(-50%);
+  /* 인스타를 보면 댓글을 달때 아무글이 없으면 게시가 클릭이 안된데 그래서
+  아무런 글이 없을때 게시에게 pointer-envent를 주면 안된다. 또 약간 튜명하게(opacity) */
+  /* pointer-events: none; */
+  opacity: 0.6;
+}
+
+/* sideBox css */
+.side_box{
+  width: 293px;
+  position: absolute;
+  right:0;
+  top:0;
+  /* 자우리가 알다시피 absolute는 기준점을 잡아주지 않으면 그냥 꼭대기까지 올라가버린다. 그래서
+  기준점을 잡아주어야한다. 부모객체 inner로 이동*/
+}
+
+.side_box.on{
+  position: fixed;
+  /* 하지만 이렇게 한다고 스크롤을 하고 내려보면 fixed특성상 브라우저 끝으로 기준점이 되는게 특성이라 저 끝으로 간다. */
+  /* 현재 그러니까 fixed를 하기전 absolute의 부모객체는 inner이다. 그래서 저위치에 있는것인데,
+  이게 absolute의 left가 아닌 right이기 때문에 fixed를 하면 오른쪽끝으로 간다.
+  그래서 해결법은 : right가아닌 left로 지정을 해주는 것이다. main.js resizefunc 함수로 이동  */
+  top: 128px;
+}
+
+.side_box .profile_thumb{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  /* margin-right는 프로필 사진 옆에 있는 id와 , ko_name의 간격이 가깝기 때문에 margin을 줌 */
+  margin-right: 10px;
+}
+.side_box .profile_thumb img{
+  width: 100%;
+  height: 100%;
+}
+.side_box .user_profile{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  font-size: 14px;
+  color: #262626;
+}
+.side_box .detail .id{
+  margin-bottom: 5px;
+}
+.side_box .detail .ko_name{
+  font-size: 12px;
+  color: #999;
+}
+
+/* 이제 sideBox 밑에 두개를 남겨두고 있다 여기서 알아두어야할 TIP은 header나 밑에
+부분이 형식이 비슷하다 이럴때는 class를 이용하는것이 경량화할수 있고 그리고 더쉽다. */
+
+.side_box > article{
+  border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  width: 291px;
+  font-size: 14px;
+  color: #262626;
+  font-weight: bold;
+  background: white;
+}
+
+/* 꺽세 쟤는 side_box article header 이거랑 다드다 바로 >는 바로 자식 바로밑에있는
+자식을 선택할때 사용한다.
+https://www.youtube.com/watch?v=HpqUMjGq51A */
+.side_box > article > header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  color: #999;
+}
+.side_box > article > header .more{
+  font-size: 12px;
+  color:#262626;
+  cursor: pointer;
+}
+.thumb_user{
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.thumb_user .profile_thumb {
+  width: 34px;
+  height: 34px;
+}
+.thumb_user .time{
+  font-size:10px;
+  letter-spacing: 0.2px;
+  color: #999;
+}
+
+/* side_box에 있는 story가 scroll이 되게 만들어보기 */
+.side_box .scroll_inner{
+  height: 182px;
+  /* 자식이 부모를 넘치지 않게하는 overflow :: */
+  /* overflow-x를 hidden한 이유는 x축으로 스크롤을 하지않을것이기 때문에   */
+  overflow-x: hidden;
+  /* auto는 contents가 많아지면 스크롤이 생기고 많아지지않으면 안생긴다. */
+  overflow-y: auto;
+  /* 또 overflow의 x , y 를 한번에 작성을 할수 있다.
+  하지만 이렇게 사용하면 인터넷 익스프롤러에게 문제가 발생할수도 있다. */
+  /* overflow: hidden auto; */
+}
+
+/* hidden menu */
+
+.hidden_menu{
+  display: none;
+  width: 600px;
+  position: absolute;
+  left: 50%; /* X축으로 가운데 정렬 밑에까지 포함 */
+  transform: translateX(-50%);
+  top: 100px;
+  overflow: hidden; /*자식들이 넘치면 안되니까*/
+  border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 3px;
+}
+
+.hidden_menu .scroll_inner{
+  height: 120px; /* 높이값은 부모클래스가 아닌 자식클래스인 scroll_Inner에게 준다. */
+  width: auto;
+  overflow-x: auto;
+  overflow-y: hidden; /* y축은 필요가 없으니까 */
+  display: flex;
+  align-items: center; /* 이친구는 이제 inner 안에있는 친구들을 y축으로 가운데 정렬한것이다. */
+  padding: 0 20px;
+}
+
+.hidden_menu .scroll_inner .user{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column; /* 하나 알아야하는 부분이 있다. flex-direction이 coloumn이면 세로로 정렬이 된것인데
+  이경우에 우리가 justify-content를 between을 주면 세로로 정렬이 된다. */
+  align-items: center;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
+.hidden_menu .scroll_inner .user .id{
+  font-size: 12px;
+  color: #262626;
+}
+
+.hidden_menu .thumb_img{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hidden_menu .thumb_img img{
+  width: 100%;
+  height: 100%;
+} /* 이렇게 하면 안보일것이다. 오른쪽 맨위로 올라갔기 때문이다. */
+
+@media screen and (max-width:1000px) { /* 1000px 이하로 떨허질때 밑에를 실행 */
+
+  /* 자 여기에는 없지만 width 값 말고 다른 속성들은 어차피 위에서 그대로 가져가니까 그냥 width값만 남기겠습니다. */
+  /* 반응형코드를 작성할때 px단위가 아닌거는 알고 있쥬? 맞아요 우리는 %를 사용을 할건데 어떻게 사용할거냐구요?
+  백분율로 계산을 할겁니다. [ http://mwultong.blogspot.com/2008/01/percent-formula.html ] 요기서 참고하셈 (백분율)*/
+  #header .inner{
+    width: 97.5%;
+  }
+  #main_container{
+    padding-top: 245px; /* hiddenmenu가 현재 contents에 가려져있기때문에 main부분을 통째로 밑으로 내릴것이다.  */
+  }
+  #main_container .inner{
+    width: 93.5%;
+  }
+  /* contents는 여기서 사실 좌우값을 조절해줘야되긴 하는데 js로 컨트롤하는것이 더 좋다. 그래서 이건 main.js의
+  resizeFunc인가 그함수가 contents를 media로다가 조절한것이다. 그래서 css로 media값을 지정하지는 않을것이다.
+  일단 contents한테 max-width값을 주어주자 위로올라가 .contents로 간다. */
+  /* .contents{
+    width: 614px;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    margin-bottom: 60px;
+    background: white;
+  } */
+
+  /* 1000px 이하로 떨어 지면 .side_box없어져야한다. */
+  .side_box{
+    display: none;
+  }
+  /* 또 side_box가 없어졌기 때문에 content가 왼쪽으로 쏠려보인다. 그래서 content를 가운데로 정렬!! */
+  .contents_box{ /* contents를 가운데로 정렬하는 방법 */
+    display: flex; /*요래하면 contents들이 가로로 나열됨*/
+    flex-direction: column; /* 그걸다시 세로로 만들어라 */
+    align-items: center;
+  }
+  .hidden_menu{
+      display:block;
+  }
+}
+/* 특정크기가 됬을때 검색창이 겹치기 때문에 없애기 */
+@media screen and ( max-width:650px ){
+  #header .search_box{
+    display: none;
+  }
+
+  .hidden_menu{
+      width: 95%;
+  }
+
+}
+

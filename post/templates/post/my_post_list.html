@@ -1,0 +1,87 @@
+{% extends 'post/layout.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% staitc 'css/mylist.css' %">
+<link rel="stylesheet" href="{% staitc 'css/common.css' %">
+<link rel="stylesheet" href="{% staitc 'css/profile.css' %">
+{% endblock head %}
+
+{% block content %}
+<div id="main_container">
+
+        <section class="b_inner">
+
+            <div class="hori_cont">
+                <div class="profile_wrap">
+                    <div class="profile_img">
+                        {% if user_profile.picture %}
+                        <script>console.log("성공")</script>
+                        <img src="{{ user_profile.picture.url }}" alt="착한호랑이">
+                        {% else %}
+                        <script>console.log("실패")</script>
+                        <img src="{% static 'imgs/img_section/img01.jpg' %}" alt="착한호랑이">
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="detail">
+                    <div class="top">
+                        <div class="user_name">{{ user.profile.nickname }}</div>
+                        <a href="{% url 'accounts:logout' %}" class="logout">로그아웃</a>
+                    </div>
+
+                <ul class="middle">
+                    <li>
+                        <span>게시물</span>
+                        {{ user.post_set.count }}
+                    </li>
+                    <li>
+                        <span>팔로워</span>
+                        {{ user.profile.follower_count }}
+                    </li>
+                    <li>
+                        <span>팔로우</span>
+                        {{ user.profile.following_count }}
+                    </li>
+                </ul>
+                <p class="about">
+                    <span class="nick_name on">내가쓴글</span>
+                    <span class="book_mark">북마크</span>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="mylist_contents contents_container active">
+            {% for post in post_list %}
+            <div class="pic">
+                <a href="{% url 'post:post_detail' post.pk %}"><img src="{{ post.photo.url }}" alt=""></a>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="bookmark_contents contents_container">
+            {% for post in all_post_list %}
+                <!-- 전체 글에서 북마크가 붙어진 post를 찾아서 모으기 -->
+                {% for bookmark_user in post.bookmark_user_set.all %} 
+            <div class="pic">
+                <!-- 현재 로그인한 user가 post에 bookmark 의 user라면 -->
+                {% if user == bookmark_user.profile.user %} 
+                <a href="#"><img src="{{ post.photo.url }}" alt=""></a>
+                {% endif %}
+            </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+
+
+    </section>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock js %}

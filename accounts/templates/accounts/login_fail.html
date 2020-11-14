@@ -1,0 +1,38 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+
+<div id="main_container">
+
+    <div class="form_container">
+
+        <div class="form">
+
+
+            <h1 class="sprite_insta_big_logo title"></h1>
+            
+            <p style="font-weight: bold;">
+            로그인 실패하셨습니다.
+            </p>
+            <p>아이디가 없다면 회원가입을 해주세요.</p>
+
+            <form action="#">
+                
+            </form>
+
+
+
+        </div>
+
+        <div class="bottom_box">
+            <div>
+                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아이디가 없으신가요? </font></font></span><a href="{% url 'accounts:signup' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 가입</font></font></a>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

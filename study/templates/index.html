@@ -1,0 +1,621 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta 태그는 웹사이트를 마들때의 셋팅을 도와줄때 meta태그 이용 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=`device-width`, initial-scale=1.0"> <!--  -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <!-- <script type="text/javascript" src="{% static 'js/main.js' %}"></script> -->
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- ## header ## -->
+  <header id='header'>
+    <section class='inner'>
+      <!-- 인스타 web에 들어가면 알다시피 header > inner 그리고
+      logo > search box > 오른쪽에 뭐시기 해서 이렇게 inner안에 3box도 존재한다. -->
+
+      <!-- ### Logo ### -->
+      <!--는 h1 태그로 만드는 전례가 있다. -->
+      <h1 class='logo'>
+        <!-- 로고 == main fage이다. a태그 달기 -->
+        <a href="{% url 'index' %}">
+          <!-- 이제 icon도 달것인데 icon 두 개를 달아야한다.  -->
+          <div class="sprite_insta_icon"></div>
+          <div class="sprite_write_logo"></div>
+          <!-- 여기서 중요한것은 이대로 icon을 보여주면 logo와 writeLogo 사이에 이상한 '-' 이런 모양이
+        같이 동봉되 output된다. ( 이유는 : a 태그로 감쌌기 때문 )
+        해결방법 : a 태그의 배경색을 없애주면 해결이 된다. ( css로 이동! ) #header .inner .logo > a 로가세요-->
+        </a>
+      </h1>
+      <!-- ### search box ###  -->
+      <div class="search_box">
+        <input type="text" name="" id='search-field' placeholder="검색" value="">
+
+        <!-- search_box에 focus 가 맞춰지면 placeholder가 사라지는 것 그리고
+                  icon을 달아야 한다.  -->
+        <div class="fake_field">
+          <span class="sprite_small_search_icon"></span>
+          <span>검색</span>
+          <!-- 여기까지 하면 우리는 inner안에 2개의 박스를 만든것이다. 하지만 logo 밑응로 갔다
+          당연한 현상이다. 우선 right-icon을 만들어 보자. -->
+        </div>
+      </div>
+
+      <div class="right_icons">
+        <div class="sprite_camera_icon"></div>
+        <div class="sprite_compass_icon"></div>
+        <div class="sprite_heart_icon_outline"></div>
+        <div class="sprite_user_icon_outline"></div>
+        <!-- 우리는 이제 inner안에 있는 3개의 box들을 가로 배치를 해야한다.
+              *** 우리는 display flex를 이용할것이다. flex : 무언가를 유연하게 만들겠는다는 것이다
+                  얘는 정렬하고자 하는 대상들한테 주는것이아니라 정렬하고자하는 대상의 부모(inner)에게 주는 것이다. -->
+      </div>
+
+    </section>
+  </header>
+
+  <!-- hidden menu라고해서 반응형적으로 element만들기 -->
+  <div class="hidden_menu">
+    <div class="scroll_inner">
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+      <div class="user">
+        <div class="thumb_img"><img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진"></div>
+        <div class="id">kindTiger</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ## main ## -->
+  <section id="main_container">
+    <div class="inner">
+
+      <div class="contents_box">
+
+        <!-- 이거 하나가 blog하나라는 것 -->
+        <article class="contents">
+          <!-- content header (user 있는곳) -->
+          <!-- contents 안에 user이미지 닉넴의 header , 이미지 부분 , 좋아요 댓 북맠 부분 , 등 필드 나누기  -->
+          <header class="top">
+            <!-- header안에는 프로필 사진 그리고 닉넴 등 이렇게 들어온다 -->
+            <div class="user_container">
+              <div class="profile_img">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필이미지">
+              </div>
+              <div class="user_name">
+                <div class="nick_name m_text">DoShinwoo</div>
+                <div class="country s_text">Seoul , South Korea</div>
+              </div>
+            </div>
+            <!-- 얘를 우리가 user_container안에 안넣은 이유는 우리가 나중에 top class에
+          display: flext;justify-content:space-between;하고 양끝으로 몰리게 되는데 하나의 요소로
+        몰아버리면 나눠지질않는다. -->
+            <div class="sprite_more_icon" data-name="more">
+              <ul class="toggle_box">
+                <li><input type="submit" class='"follow"' value='팔로우' data-name='follow'></li>
+                <li>수정</li>
+                <li>삭제</li>
+              </ul>
+            </div>
+          </header>
+          <!-- user field end -->
+
+          <!-- image가 들어가는곳 -->
+          <div class="img_section">
+            <!-- 이미지가 여러가지로 올라올수 있으니까 tras_inner를 만들어주자 -->
+            <div class="trans_inner">
+              <div class=""><img src='{% static "imgs/img_section/img01.jpg" %}' alt="visual01" /></div>
+            </div>
+          </div>
+          <!-- image end -->
+
+          <!-- 좋아요 버튼과 댓글버튼이 들어가는 field -->
+          <div class="bottom_icons">
+            <div class="left_icons">
+              <div class="heart_btn">
+                <!-- heart_icon을 heartbtn으로 감싸야하는이유는
+                                            애니매이선이 적용이 되야되서 감싸주는 것이 좋다. -->
+                <div class="sprite_heart_icon_outline" name=37 data-name='heartbeat'></div>
+              </div>
+              <div class="sprite_bubble_icon"></div>
+              <div class="sprite_share_icon" data-name='share'></div>
+            </div>
+            <div class="right_icon">
+              <div class="sprite_bookmark_outline" name='37' data-name='bookmark'></div>
+            </div>
+          </div>
+          <!-- 좋아요 , 댓 , 북 버튼 들어가는곳 end -->
+
+          <!-- 좋아요 count -->
+          <div class="likes m_text">
+
+            <span id='like-count-37'>2,345</span>
+            <span id='bookmark-count-37'></span>
+
+          </div>
+          <!-- end -->
+          <!-- 댓글 field -->
+          <div class="comment_container">
+            <div class="comment" id="comment-list-ajax-post37">
+
+              <div class="comment-detail">
+                <div class="nick_name m_text">nayeon</div>
+                <div class="">귀여워</div>
+              </div>
+
+            </div>
+            <div class="small_heart">
+              <div class="sprite_small_heart_icon_outline"></div>
+            </div>
+          </div>
+          <!-- end -->
+          <!-- timer -->
+          <div class="timer">1시간 전</div>
+          <!-- end -->
+          <div class="comment_field" id="add-comment-post-37">
+            <input type="text" placeholder="댓글달기...">
+            <div class="upload_btn m_text" data-name='comment'>게시</div>
+          </div>
+        </article>
+        <!-- content end -->
+
+        <!-- 추가 contents들 -->
+        <article class="contents">
+          <!-- content header (user 있는곳) -->
+          <!-- contents 안에 user이미지 닉넴의 header , 이미지 부분 , 좋아요 댓 북맠 부분 , 등 필드 나누기  -->
+          <header class="top">
+            <!-- header안에는 프로필 사진 그리고 닉넴 등 이렇게 들어온다 -->
+            <div class="user_container">
+              <div class="profile_img">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필이미지">
+              </div>
+              <div class="user_name">
+                <div class="nick_name m_text">DoShinwoo</div>
+                <div class="country s_text">Seoul , South Korea</div>
+              </div>
+            </div>
+            <!-- 얘를 우리가 user_container안에 안넣은 이유는 우리가 나중에 top class에
+          display: flext;justify-content:space-between;하고 양끝으로 몰리게 되는데 하나의 요소로
+        몰아버리면 나눠지질않는다. -->
+            <div class="sprite_more_icon" data-name="more">
+              <ul class="toggle_box">
+                <li><input type="submit" class='"follow"' value='팔로우' data-name='follow'></li>
+                <li>수정</li>
+                <li>삭제</li>
+              </ul>
+            </div>
+          </header>
+          <!-- user field end -->
+
+          <!-- image가 들어가는곳 -->
+          <div class="img_section">
+            <!-- 이미지가 여러가지로 올라올수 있으니까 tras_inner를 만들어주자 -->
+            <div class="trans_inner">
+              <div class=""><img src='{% static "imgs/img_section/img01.jpg" %}' alt="visual01" /></div>
+            </div>
+          </div>
+          <!-- image end -->
+
+          <!-- 좋아요 버튼과 댓글버튼이 들어가는 field -->
+          <div class="bottom_icons">
+            <div class="left_icons">
+              <div class="heart_btn">
+                <!-- heart_icon을 heartbtn으로 감싸야하는이유는
+                                            애니매이선이 적용이 되야되서 감싸주는 것이 좋다. -->
+                <div class="sprite_heart_icon_outline" name=37 data-name='heartbeat'></div>
+              </div>
+              <div class="sprite_bubble_icon"></div>
+              <div class="sprite_share_icon" data-name='share'></div>
+            </div>
+            <div class="right_icon">
+              <div class="sprite_bookmark_outline" name='37' data-name='bookmark'></div>
+            </div>
+          </div>
+          <!-- 좋아요 , 댓 , 북 버튼 들어가는곳 end -->
+
+          <!-- 좋아요 count -->
+          <div class="likes m_text">
+
+            <span id='like-count-37'>2,345</span>
+            <span id='bookmark-count-37'></span>
+
+          </div>
+          <!-- end -->
+          <!-- 댓글 field -->
+          <div class="comment_container">
+            <div class="comment" id="comment-list-ajax-post37">
+
+              <div class="comment-detail">
+                <div class="nick_name m_text">nayeon</div>
+                <div class="">귀여워</div>
+              </div>
+
+            </div>
+            <div class="small_heart">
+              <div class="sprite_small_heart_icon_outline"></div>
+            </div>
+          </div>
+          <!-- end -->
+          <!-- timer -->
+          <div class="timer">1시간 전</div>
+          <!-- end -->
+          <div class="comment_field" id="add-comment-post-37">
+            <input type="text" placeholder="댓글달기...">
+            <div class="upload_btn m_text" data-name='comment'>게시</div>
+          </div>
+        </article>
+        <article class="contents">
+          <!-- content header (user 있는곳) -->
+          <!-- contents 안에 user이미지 닉넴의 header , 이미지 부분 , 좋아요 댓 북맠 부분 , 등 필드 나누기  -->
+          <header class="top">
+            <!-- header안에는 프로필 사진 그리고 닉넴 등 이렇게 들어온다 -->
+            <div class="user_container">
+              <div class="profile_img">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필이미지">
+              </div>
+              <div class="user_name">
+                <div class="nick_name m_text">DoShinwoo</div>
+                <div class="country s_text">Seoul , South Korea</div>
+              </div>
+            </div>
+            <!-- 얘를 우리가 user_container안에 안넣은 이유는 우리가 나중에 top class에
+          display: flext;justify-content:space-between;하고 양끝으로 몰리게 되는데 하나의 요소로
+        몰아버리면 나눠지질않는다. -->
+            <div class="sprite_more_icon" data-name="more">
+              <ul class="toggle_box">
+                <li><input type="submit" class='"follow"' value='팔로우' data-name='follow'></li>
+                <li>수정</li>
+                <li>삭제</li>
+              </ul>
+            </div>
+          </header>
+          <!-- user field end -->
+
+          <!-- image가 들어가는곳 -->
+          <div class="img_section">
+            <!-- 이미지가 여러가지로 올라올수 있으니까 tras_inner를 만들어주자 -->
+            <div class="trans_inner">
+              <div class=""><img src='{% static "imgs/img_section/img01.jpg" %}' alt="visual01" /></div>
+            </div>
+          </div>
+          <!-- image end -->
+
+          <!-- 좋아요 버튼과 댓글버튼이 들어가는 field -->
+          <div class="bottom_icons">
+            <div class="left_icons">
+              <div class="heart_btn">
+                <!-- heart_icon을 heartbtn으로 감싸야하는이유는
+                                            애니매이선이 적용이 되야되서 감싸주는 것이 좋다. -->
+                <div class="sprite_heart_icon_outline" name=37 data-name='heartbeat'></div>
+              </div>
+              <div class="sprite_bubble_icon"></div>
+              <div class="sprite_share_icon" data-name='share'></div>
+            </div>
+            <div class="right_icon">
+              <div class="sprite_bookmark_outline" name='37' data-name='bookmark'></div>
+            </div>
+          </div>
+          <!-- 좋아요 , 댓 , 북 버튼 들어가는곳 end -->
+
+          <!-- 좋아요 count -->
+          <div class="likes m_text">
+
+            <span id='like-count-37'>2,345</span>
+            <span id='bookmark-count-37'></span>
+
+          </div>
+          <!-- end -->
+          <!-- 댓글 field -->
+          <div class="comment_container">
+            <div class="comment" id="comment-list-ajax-post37">
+
+              <div class="comment-detail">
+                <div class="nick_name m_text">nayeon</div>
+                <div class="">귀여워</div>
+              </div>
+
+            </div>
+            <div class="small_heart">
+              <div class="sprite_small_heart_icon_outline"></div>
+            </div>
+          </div>
+          <!-- end -->
+          <!-- timer -->
+          <div class="timer">1시간 전</div>
+          <!-- end -->
+          <div class="comment_field" id="add-comment-post-37">
+            <input type="text" placeholder="댓글달기...">
+            <div class="upload_btn m_text" data-name='comment'>게시</div>
+          </div>
+        </article>
+        <article class="contents">
+          <!-- content header (user 있는곳) -->
+          <!-- contents 안에 user이미지 닉넴의 header , 이미지 부분 , 좋아요 댓 북맠 부분 , 등 필드 나누기  -->
+          <header class="top">
+            <!-- header안에는 프로필 사진 그리고 닉넴 등 이렇게 들어온다 -->
+            <div class="user_container">
+              <div class="profile_img">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필이미지">
+              </div>
+              <div class="user_name">
+                <div class="nick_name m_text">DoShinwoo</div>
+                <div class="country s_text">Seoul , South Korea</div>
+              </div>
+            </div>
+            <!-- 얘를 우리가 user_container안에 안넣은 이유는 우리가 나중에 top class에
+          display: flext;justify-content:space-between;하고 양끝으로 몰리게 되는데 하나의 요소로
+        몰아버리면 나눠지질않는다. -->
+            <div class="sprite_more_icon" data-name="more">
+              <ul class="toggle_box">
+                <li><input type="submit" class='"follow"' value='팔로우' data-name='follow'></li>
+                <li>수정</li>
+                <li>삭제</li>
+              </ul>
+            </div>
+          </header>
+          <!-- user field end -->
+
+          <!-- image가 들어가는곳 -->
+          <div class="img_section">
+            <!-- 이미지가 여러가지로 올라올수 있으니까 tras_inner를 만들어주자 -->
+            <div class="trans_inner">
+              <div class=""><img src='{% static "imgs/img_section/img01.jpg" %}' alt="visual01" /></div>
+            </div>
+          </div>
+          <!-- image end -->
+
+          <!-- 좋아요 버튼과 댓글버튼이 들어가는 field -->
+          <div class="bottom_icons">
+            <div class="left_icons">
+              <div class="heart_btn">
+                <!-- heart_icon을 heartbtn으로 감싸야하는이유는
+                                            애니매이선이 적용이 되야되서 감싸주는 것이 좋다. -->
+                <div class="sprite_heart_icon_outline" name=37 data-name='heartbeat'></div>
+              </div>
+              <div class="sprite_bubble_icon"></div>
+              <div class="sprite_share_icon" data-name='share'></div>
+            </div>
+            <div class="right_icon">
+              <div class="sprite_bookmark_outline" name='37' data-name='bookmark'></div>
+            </div>
+          </div>
+          <!-- 좋아요 , 댓 , 북 버튼 들어가는곳 end -->
+
+          <!-- 좋아요 count -->
+          <div class="likes m_text">
+
+            <span id='like-count-37'>2,345</span>
+            <span id='bookmark-count-37'></span>
+
+          </div>
+          <!-- end -->
+          <!-- 댓글 field -->
+          <div class="comment_container">
+            <div class="comment" id="comment-list-ajax-post37">
+
+              <div class="comment-detail">
+                <div class="nick_name m_text">nayeon</div>
+                <div class="">귀여워</div>
+              </div>
+
+            </div>
+            <div class="small_heart">
+              <div class="sprite_small_heart_icon_outline"></div>
+            </div>
+          </div>
+          <!-- end -->
+          <!-- timer -->
+          <div class="timer">1시간 전</div>
+          <!-- end -->
+          <div class="comment_field" id="add-comment-post-37">
+            <input type="text" placeholder="댓글달기...">
+            <div class="upload_btn m_text" data-name='comment'>게시</div>
+          </div>
+        </article>
+
+
+
+      </div>
+
+      <input type="hidden" id="page" value="0">
+
+      <!-- side box -->
+      <div class="side_box">
+        <div class="user_profile">
+          <div class="profile_thumb">
+            <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+          </div>
+          <div class="detail">
+            <div class="id m_text">DoShinwoo</div>
+            <div class="ko_name">신우(19)</div>
+          </div>
+        </div>
+        <article class="story">
+          <header class="story_header">
+            <div class="">스토리</div>
+            <div class="more">모두 보기</div>
+          </header>
+
+          <!-- 스크롤링 되려면 한 번 감싸주어야한다. -->
+          <div class="scroll_inner">
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+            <div class="thumb_user">
+              <div class="profile_thumb">
+                <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+              </div>
+              <div class="detail">
+                <div class="id m_text">Nayeon</div>
+                <div class="time">1시간 전</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="recommend">
+          <header class="reco_header">
+            <div class="">회원님을 위한 추천</div>
+            <div class="more">모두 보기</div>
+          </header>
+
+          <div class="thumb_user">
+            <div class="profile_thumb">
+              <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+            </div>
+            <div class="detail">
+              <div class="id m_text">Nayeon</div>
+              <div class="time">1시간 전</div>
+            </div>
+          </div>
+
+          <div class="thumb_user">
+            <div class="profile_thumb">
+              <img src="{% static 'imgs/thumb.jpeg' %}" alt="프로필사진">
+            </div>
+            <div class="detail">
+              <div class="id m_text">Nayeon</div>
+              <div class="time">1시간 전</div>
+            </div>
+          </div>
+
+
+        </article>
+      </div>
+
+      <!-- sidebox end -->
+    </div>
+  </section>
+
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  <!-- <script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script> -->
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
